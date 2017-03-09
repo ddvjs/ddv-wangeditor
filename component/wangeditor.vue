@@ -3,21 +3,29 @@
 </template>
 
 <script>
-
+const uploadInit = require('../lib/uploadInit.js');
 export default{
-  props: ['inputContent', 'menus'],
+  props: {
+    inputContent:String,
+    menus:Array,
+    httpRequest:{
+      type:Function,
+      default:null
+    }
+  },
   data() {
     return {
       content: ''
     }
   },
-  computed: {
-  },
   mounted() {
-    import('wangeditor')
-    .then(wangeditor=>{
-      this.createEditor(wangeditor)
-    })
+    var startTime = new Date()
+    var timeer = setInterval(()=>{
+      if ((this.$refs.editor && this.$refs.editor.clientWidth) || new Date() - startTime>=3000) {
+        clearInterval(timeer)
+        import('wangeditor').then(WangEditor=>this.createEditor(WangEditor))
+      }
+    },100)
   },
   methods: {
     createEditor(WangEditor) {
@@ -35,6 +43,10 @@ export default{
       // editor.config.uploadImgUrl = this.uploadUrl
       editor.onchange = function() {
         self.formatContent(this.$txt.html())
+      }
+      if (this.httpRequest&&typeof this.httpRequest === 'function') {
+        editor.config.customUpload = true;  // 设置自定义上传的开关
+        editor.config.customUploadInit = uploadInit(this.httpRequest);  // 配置自定义上传初始化事件，uploadInit方法在上面定义了
       }
       editor.create()
     },
