@@ -5,7 +5,7 @@
 <script>
 
 export default{
-  props: ['inputContent', 'uploadUrl'],
+  props: ['inputContent', 'menus'],
   data() {
     return {
       content: ''
@@ -23,11 +23,16 @@ export default{
     createEditor(WangEditor) {
       const self = this
       const editor = new WangEditor(this.$refs.editor)
-      editor.config.menus = [
-        'source', '|', 'bold', 'underline', 'italic', 'strikethrough', 'eraser', 'forecolor', 'bgcolor', '|', 'quote', 'fontfamily', 'fontsize', 'head', 'unorderlist', 'orderlist', 'alignleft', 'aligncenter', 'alignright',
-        '|', 'link', 'unlink', 'table', 'img', 'video', 'insertcode', '|', 'undo', 'redo', 'fullscreen'
-      ]
-      editor.config.uploadImgUrl = this.uploadUrl
+
+      if(this.menus instanceof Array && this.menus.length !== 0){
+        editor.config.menus = this.menus
+      }else{
+        editor.config.menus = [
+          'source', '|', 'bold', 'underline', 'italic', 'strikethrough', 'eraser', 'forecolor', 'bgcolor', '|', 'quote', 'fontfamily', 'fontsize', 'head', 'unorderlist', 'orderlist', 'alignleft', 'aligncenter', 'alignright',
+          '|', 'link', 'unlink', 'table', 'img', 'video', 'insertcode', '|', 'undo', 'redo', 'fullscreen'
+        ]
+      }
+      // editor.config.uploadImgUrl = this.uploadUrl
       editor.onchange = function() {
         self.formatContent(this.$txt.html())
       }

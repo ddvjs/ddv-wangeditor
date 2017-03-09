@@ -34,6 +34,7 @@ export default {
   <ddv-wangeditor
   	:input-content="inputContent"
   	:upload-url="uploadURL"
+    :menus="menus"
   	v-model="outputContent"></ddv-wangeditor>
 </template>
 
@@ -42,8 +43,8 @@ export default {
     inputContent: 'asdsad',
     //从编辑器输出的内容
     outputContent: 'asdsad',
-    //设置图片上传API网址
-    uploadURL: '/11111'
+    //编辑器工具栏配置,可选，默认全部
+    menus:[]
   }
 
 ```
