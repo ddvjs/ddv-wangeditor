@@ -33,10 +33,9 @@ export default {
 <template>
   <ddv-wangeditor
   	:input-content="inputContent"
-  	:upload-url="uploadURL"
     :menus="menus"
   	v-model="outputContent"></ddv-wangeditor>
-</template>
+</template>  
 
   export default {
     //输入内容到编辑器
@@ -47,8 +46,4 @@ export default {
     menus:[]
   }
 
-```
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-shim.min.js"></script>
 ```
