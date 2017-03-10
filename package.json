@@ -1,7 +1,7 @@
 {
   "name": "ddv-wangeditor",
   "version": "0.0.3",
-  "description": "ddv-wangeditor",
+  "description": "ddv-wangeditor a vue component based on the wangeditor package",
   "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint --ext .js lib --ignore-pattern dist",
