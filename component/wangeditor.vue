@@ -60,8 +60,7 @@ export default{
   }
 }
 </script>
-
-<style src="wangeditor/dist/css/wangEditor.css"></style>
+<style lang='css' src="wangeditor/dist/css/wangEditor.css"></style>
 
 <style lang="css" scoped>
   .wangEditor-container{

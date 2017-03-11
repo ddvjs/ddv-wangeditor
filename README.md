@@ -21,7 +21,7 @@ Vue.use(ddvWangeditor)
 
 // or use with component(ES6)
 import Vue from 'vue'
-import { ddvWangeditor } from 'vue-video-player'
+import { ddvWangeditor } from 'ddv-wangeditor'
 // use
 export default {
   components: {
@@ -34,16 +34,25 @@ export default {
   <ddv-wangeditor
   	:input-content="inputContent"
     :menus="menus"
+    :http-request="httpRequest"
   	v-model="outputContent"></ddv-wangeditor>
 </template>  
 
   export default {
-    //输入内容到编辑器
-    inputContent: 'asdsad',
-    //从编辑器输出的内容
-    outputContent: 'asdsad',
-    //编辑器工具栏配置,可选，默认全部
-    menus:[]
+    data () {
+      //输入内容到编辑器
+      inputContent: 'asdsad',
+      //从编辑器输出的内容
+      outputContent: 'asdsad',
+      //编辑器工具栏配置,可选，默认全部
+      menus:[]
+    },
+    methods: {
+      //自定义图片上传模块
+      httpRequest(options){
+
+      }
+    }
   }
 
 ```
