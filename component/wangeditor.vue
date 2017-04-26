@@ -44,7 +44,7 @@ export default{
       editor.onchange = function() {
         self.formatContent(this.$txt.html())
       }
-      if (this.httpRequest&&typeof this.httpRequest === 'function') {
+      if (this.httpRequest && typeof this.httpRequest === 'function') {
         editor.config.customUpload = true;  // 设置自定义上传的开关
         editor.config.customUploadInit = uploadInit(this.httpRequest);  // 配置自定义上传初始化事件，uploadInit方法在上面定义了
       }
